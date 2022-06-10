@@ -1,0 +1,21 @@
+<div class="container">
+
+  <H1>TODO</H1>
+
+  <div class="alert alert-info">Enter your TODO task in natural language with date and/or time.</div>
+  <div class="alert alert-info">Examples: "Submit the timesheet next Friday", "Submit EY task on 23rd June".</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && description.invalid">Enter atleast 5 characters in Description.</div>
+  
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm" name="todoForm">
+    <fieldset class="form-group">
+      <label>What and When TODO?</label>
+      <input type="text" #description="ngModel" 
+            [(ngModel)]="todo.description" class="form-control" 
+                name="description" required="required" minlength="5">
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save Task</button>
+    &nbsp;&nbsp;
+    <a class="btn btn-default btn-secondary" routerLink="/todo-list">Back</a>
+  </form>  
+</div>
